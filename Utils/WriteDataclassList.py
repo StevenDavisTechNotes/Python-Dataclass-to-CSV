@@ -5,6 +5,9 @@ from .CSVDataclassTableWriter import CSVDataclassTableWriter
 U = TypeVar('U')
 
 
-def WriteDataclassList(outputLogFile: TextIO, rows: List[U], t: Type[U]):
-    CSVDataclassTableWriter[t](
+def WriteDataclassList(
+        outputLogFile: TextIO,
+        rows: List[U],
+        rowType: Type[U]):
+    CSVDataclassTableWriter[rowType](
         rows).write_file(outputLogFile)

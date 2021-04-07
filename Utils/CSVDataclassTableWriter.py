@@ -58,7 +58,8 @@ class CSVDataclassTableWriter(Generic[T]):
         writer.writerow(self.field_names)
         records_field = self.record_field
         writer.writerows(
-            self.serialize(record) for record in getattr(self, records_field)
+            self.serialize(record) for record
+            in getattr(self, records_field)
         )
         if footer is not None:
             file.write(footer+'\n')
@@ -66,8 +67,8 @@ class CSVDataclassTableWriter(Generic[T]):
     def serialize(self, record: T):
         for field in fields(record):
             value = getattr(record, field.name)
-            serializer = OBJECT_SERIALIZERS.get(field.type, None)
-
+            serializer = \
+                OBJECT_SERIALIZERS.get(field.type, None)
             if serializer:
                 value = serializer(value)
             yield value
