@@ -94,7 +94,3 @@ Month,OrderNumber,ItemId,EffectType,Advertising,CommissionsAndFees,LegalAndProfS
             WriteDataclassList(testFile, expenses, ExampleExpenseEffect)
             testFileText = testFile.getvalue().strip()
             assert(testFileText == expected)
-
-
-if __name__ == '__main__':
-    Test_01_CSVDataclassTableWriter().test_Basic()
